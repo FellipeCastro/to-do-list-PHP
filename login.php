@@ -22,7 +22,7 @@
                     <input type="password" name="password" id="password" placeholder="Digite sua senha" required>
                 </div>
 
-                <button type="submit" class="btn">Login</button>
+                <input type="submit" value="Login" class="btn">
 
                 <p class="link">Ainda não tem uma conta? <a href="register.php">Cadastre-se aqui!</a></p>
             </fieldset>
