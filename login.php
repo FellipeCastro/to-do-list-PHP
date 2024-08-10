@@ -18,24 +18,28 @@
             $username = $_POST["username"];
             $password = $_POST["password"];
 
-            $sql = "SELECT * FROM users WHERE username = '$username' and password = '$password'";
+            // Consulta para verificar se o usuário existe
+            $sql = "SELECT * FROM users WHERE username = '$username'";
 
             $result = $connection -> query($sql);
 
-            // Se o número de linhas for menor que 1, ou seja, se não existir esse usuário
-            if (mysqli_num_rows($result) < 1) {
-                // Deletando dados da sessão
-                unset($_SESSION["username"]);
-                unset($_SESSION["password"]);
-                header("Location: login.php");
+            if ($result && mysqli_num_rows($result) > 0) {
+                $user = $result -> fetch_assoc();
+                
+                // Verificando se a senha inserida corresponde à senha do banco de dados
+                if ($password == $user['password']) {
+                    // Adicionando o ID e o nome de usuário à sessão
+                    $_SESSION["id"] = $user['id'];
+                    $_SESSION["username"] = $user['username'];
+
+                    header("Location: home.php");
+                    exit();
+                } else {
+                    echo "Senha incorreta.";
+                }
             } else {
-                $_SESSION["username"] = $username;
-                $_SESSION["password"] = $password;
-                header("Location: home.php");
+                echo "Usuário não encontrado.";
             }
-        } else {
-            // Se o formulário não for enviado o sistema não é acessado
-            header("Location: login.php");
         }
     ?>
 
