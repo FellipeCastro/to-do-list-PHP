@@ -27,20 +27,8 @@ header {
 }
 
 header h1 {
-    font-size: 1.5em;
+    font-size: 2em;
     color: #1e90ff;
-}
-
-header a {
-    color: #ff0000;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-decoration: none;
-    transition: .5s;
-}
-
-header a:hover {
-    color: #ff000099;
 }
 
 main {
@@ -56,20 +44,28 @@ main {
     gap: 1em;
 }
 
-main a {
+.title {
     width: 100%;
-    background-color: #1e90ff;
+    background-image: linear-gradient(to right, #1493dc, #113647);
     padding: .5em 1em;
     border-radius: 5px;
     color: #fff;
-    font-size: 1.3em;
+    font-size: 2em;
     font-weight: bold;
     text-decoration: none;
     transition: .5s;
 }
 
+main a {
+    width: 100%;
+    color: #1e90ff;
+    text-align: right;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
 main a:hover {
-    background-color: #1e90ff99;
+    color: #1e90ff99;
 }
 
 .tasks {
@@ -88,7 +84,7 @@ main a:hover {
     justify-content: space-between;
 }
 
-.task h2 {
+.task h3 {
     font-size: 1.2em;
     color: #1e90ff;
 }
@@ -103,6 +99,7 @@ main a:hover {
     align-items: center;
     justify-content: center;
     padding: .5em;
+    border-radius: 5px;
 }
 
 .delete-btn {
@@ -134,7 +131,7 @@ main a:hover {
     background-color: #1e90ff99;
 }
 
-.done {
+.done h3 {
     text-decoration: line-through;
     opacity: 0.6;
 }
