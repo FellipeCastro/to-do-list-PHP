@@ -25,8 +25,7 @@
             $task = $_POST["task"];
             $user_id = $_SESSION["id"];
 
-            $result = mysqli_query($connection, "INSERT INTO tasks (user_id, title) VALUES ('$user_id', '$task');
-");
+            $result = mysqli_query($connection, "INSERT INTO tasks (user_id, title) VALUES ('$user_id', '$task');");
             
             if ($result) {
                 header("Location: home.php");

@@ -92,3 +92,31 @@ main a:hover {
     font-size: 1.2em;
     color: #1e90ff;
 }
+
+.btn-container {
+    display: flex;
+    gap: .5em;
+}
+
+.btn-container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5em;
+}
+
+.btn-container a:first-child {
+    background-color: #ff0000;
+}
+
+.btn-container a:first-child:hover {
+    background-color: #ff000099;
+}
+
+.btn-container a:last-child {
+    background-color: #008000;
+}
+
+.btn-container a:last-child:hover {
+    background-color: #00800099;
+}
