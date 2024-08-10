@@ -23,6 +23,7 @@
             include_once("config.php");
 
             $task = $_POST["task"];
+            $task_id = $_GET["task_id"];
             $user_id = $_SESSION["id"];
 
             $result = mysqli_query($connection, "INSERT INTO tasks (user_id, title) VALUES ('$user_id', '$task');");
