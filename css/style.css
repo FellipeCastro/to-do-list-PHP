@@ -44,7 +44,7 @@ header a:hover {
 }
 
 main {
-    width: 800px;
+    width: 600px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .6);
@@ -58,18 +58,19 @@ main {
 
 main a {
     width: 100%;
-    background-image: linear-gradient(to right, #1493dc, #113647);
+    background-color: #1e90ff;
     padding: .5em 1em;
     border-radius: 5px;
     color: #fff;
     font-size: 1.3em;
     font-weight: bold;
     text-decoration: none;
+    transition: .5s;
 }
 
-/* main a:hover {
-    
-} */
+main a:hover {
+    background-color: #1e90ff99;
+}
 
 .tasks {
     width: 100%;

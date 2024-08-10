@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List PHP</title>
-    <link rel="stylesheet" href="css/homeStyle.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php 
@@ -33,16 +33,16 @@
     </header>
 
     <main>
-        <a href="#">Adicionar tarefa</a>
+        <a href="add-task.php">Adicionar tarefa</a>
 
         <div class="tasks">
             <?php 
                 // Verificando se a consulta retornou resultados
-                if ($tasks_result->num_rows > 0) {
+                if ($tasks_result -> num_rows > 0) {
                     // Iterando sobre os resultados e exibindo as tarefas
                     while($task = $tasks_result->fetch_assoc()) {
                         echo "<div class='task'>";
-                        echo "<h2>" . htmlspecialchars($task['title']) . "</h2>";
+                        echo "<h2>" . htmlspecialchars($task["title"]) . "</h2>";
                         echo "</div>";
                     }
                 } else {
