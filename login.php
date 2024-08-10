@@ -1,3 +1,39 @@
+<?php 
+    // Iniciando a sessão
+    session_start();
+
+    // Verificando se o fomulário foi enviado
+    if (isset($_POST["submit"])) {
+        include_once("config.php");
+
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        // Consulta para verificar se o usuário existe
+        $sql = "SELECT * FROM users WHERE username = '$username'";
+
+        $result = $connection -> query($sql);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            $user = $result -> fetch_assoc();
+            
+            // Verificando se a senha inserida corresponde à senha do banco de dados
+            if ($password == $user['password']) {
+                // Adicionando o ID e o nome de usuário à sessão
+                $_SESSION["id"] = $user['id'];
+                $_SESSION["username"] = $user['username'];
+
+                header("Location: home.php");
+                exit();
+            } else {
+                echo "Senha incorreta.";
+            }
+        } else {
+            echo "Usuário não encontrado.";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,42 +43,6 @@
     <link rel="stylesheet" href="css/styleForm.css">
 </head>
 <body>
-    <?php 
-        // Iniciando a sessão
-        session_start();
-
-        // Verificando se o fomulário foi enviado
-        if (isset($_POST["submit"])) {
-            include_once("config.php");
-
-            $username = $_POST["username"];
-            $password = $_POST["password"];
-
-            // Consulta para verificar se o usuário existe
-            $sql = "SELECT * FROM users WHERE username = '$username'";
-
-            $result = $connection -> query($sql);
-
-            if ($result && mysqli_num_rows($result) > 0) {
-                $user = $result -> fetch_assoc();
-                
-                // Verificando se a senha inserida corresponde à senha do banco de dados
-                if ($password == $user['password']) {
-                    // Adicionando o ID e o nome de usuário à sessão
-                    $_SESSION["id"] = $user['id'];
-                    $_SESSION["username"] = $user['username'];
-
-                    header("Location: home.php");
-                    exit();
-                } else {
-                    echo "Senha incorreta.";
-                }
-            } else {
-                echo "Usuário não encontrado.";
-            }
-        }
-    ?>
-
     <div class="form-container">
         <form action="<?= $_SERVER["PHP_SELF"] ?>" method="post" autocomplete="off">
             <fieldset>

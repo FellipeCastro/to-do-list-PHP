@@ -1,32 +1,32 @@
+<?php 
+    // Verificando se o fomulário foi enviado
+    if (isset($_POST["submit"])) {
+        include_once("config.php");
+
+        $username = $_POST["username"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        $result = mysqli_query($connection, "INSERT INTO users(username, password, email) VALUES ('$username', '$password', '$email')");
+        
+        if ($result) {
+            header("Location: login.php");
+            exit();
+        } else {
+            echo "Erro ao cadastrar o usuário: " . mysqli_error($connection);
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List PHP</title>
-    <link rel="stylesheet" href="css/stykeForm.css">
+    <link rel="stylesheet" href="css/styleForm.css">
 </head>
 <body>
-    <?php 
-        // Verificando se o fomulário foi enviado
-        if (isset($_POST["submit"])) {
-            include_once("config.php");
-
-            $username = $_POST["username"];
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-
-            $result = mysqli_query($connection, "INSERT INTO users(username, password, email) VALUES ('$username', '$password', '$email')");
-            
-            if ($result) {
-                header("Location: login.php");
-                exit();
-            } else {
-                echo "Erro ao cadastrar o usuário: " . mysqli_error($connection);
-            }
-        }
-    ?>
-
     <div class="form-container">
         <form action="<?= $_SERVER["PHP_SELF"] ?>" method="post" autocomplete="off">
             <fieldset>

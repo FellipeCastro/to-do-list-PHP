@@ -105,18 +105,37 @@ main a:hover {
     padding: .5em;
 }
 
-.btn-container a:first-child {
+.delete-btn {
     background-color: #ff0000;
 }
 
-.btn-container a:first-child:hover {
+.delete-btn:hover {
     background-color: #ff000099;
 }
 
-.btn-container a:last-child {
+.edit-btn {
     background-color: #008000;
 }
 
-.btn-container a:last-child:hover {
+.edit-btn:hover {
     background-color: #00800099;
 }
+
+.done-btn {
+    background-color: #1e90ff;
+    padding: .8em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.done-btn:hover {
+    background-color: #1e90ff99;
+}
+
+.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
