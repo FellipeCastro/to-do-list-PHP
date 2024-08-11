@@ -18,18 +18,18 @@
             $user = $result -> fetch_assoc();
             
             // Verificando se a senha inserida corresponde à senha do banco de dados
-            if ($password == $user['password']) {
+            if ($password == $user["password"]) {
                 // Adicionando o ID e o nome de usuário à sessão
-                $_SESSION["id"] = $user['id'];
-                $_SESSION["name"] = $user['name'];
+                $_SESSION["id"] = $user["id"];
+                $_SESSION["name"] = $user["name"];
 
                 header("Location: home.php");
                 exit();
             } else {
-                echo "<span class='error'>Senha incorreta</span>";
+                echo "<span class='error'>Senha incorreta!</span>";
             }
         } else {
-            echo "<span class='error'>Usuário não encontrado</span>";
+            echo "<span class='error'>Usuário não encontrado!</span>";
         }
     }
 ?>
@@ -40,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List PHP</title>
-    <link rel="stylesheet" href="css/styleForms.css">
+    <link rel="stylesheet" href="css/styleForm.css">
 </head>
 <body>
     <div class="form-container">

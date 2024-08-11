@@ -7,16 +7,25 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $result = mysqli_query($connection, "INSERT INTO users(name, password, email) VALUES ('$name', '$password', '$email')");
-        
-        if ($result) {
-            header("Location: login.php");
-            exit();
+        // Verificando se o email já está cadastrado
+        $check_email_sql = "SELECT * FROM users WHERE email = '$email'";
+        $check_email_result = mysqli_query($connection, $check_email_sql);
+
+        if (mysqli_num_rows($check_email_result) > 0) {
+            echo "<span class='error'>E-mail já cadastrado!</span>";
         } else {
-            echo "Erro ao cadastrar o usuário: " . mysqli_error($connection);
+            $result = mysqli_query($connection, "INSERT INTO users(name, password, email) VALUES ('$name', '$password', '$email')");
+        
+            if ($result) {
+                header("Location: login.php");
+                exit();
+            } else {
+                $error_message = "Erro ao cadastrar o usuário: " . mysqli_error($connection);
+            }
         }
     }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
