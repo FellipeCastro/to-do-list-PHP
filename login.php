@@ -26,10 +26,10 @@
                 header("Location: home.php");
                 exit();
             } else {
-                echo "Senha incorreta.";
+                echo "<span class='error'>Senha incorreta</span>";
             }
         } else {
-            echo "Usuário não encontrado.";
+            echo "<span class='error'>Usuário não encontrado</span>";
         }
     }
 ?>
@@ -40,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List PHP</title>
-    <link rel="stylesheet" href="css/styleForm.css">
+    <link rel="stylesheet" href="css/styleForms.css">
 </head>
 <body>
     <div class="form-container">

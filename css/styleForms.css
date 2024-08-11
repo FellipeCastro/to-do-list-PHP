@@ -44,6 +44,18 @@ header a:hover {
     color: #ff000099;
 }
 
+.error {
+    width: 500px;
+    text-align: center;
+    color: #ff0000;
+    font-weight: bold;
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: #ffb6c1;
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+}
+
 .form-container {
     width: 500px;
     background-color: rgba(0, 0, 0, 0.6);

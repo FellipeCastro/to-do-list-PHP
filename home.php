@@ -41,7 +41,7 @@
                 // Verificando se a consulta retornou resultados
                 if ($tasks_result -> num_rows > 0) {
                     // Iterando sobre os resultados e exibindo as tarefas
-                    while($task = $tasks_result->fetch_assoc()) {
+                    while($task = $tasks_result -> fetch_assoc()) {
                         // Adiciona a classe 'done' se a tarefa estiver concluída
                         $task_class = $task["status"] == "completed" ? "done" : "";
 
