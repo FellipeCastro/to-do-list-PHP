@@ -28,20 +28,8 @@ header {
 }
 
 header h1 {
-    font-size: 1.5em;
+    font-size: 2em;
     color: #1e90ff;
-}
-
-header a {
-    color: #ff0000;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-decoration: none;
-    transition: .5s;
-}
-
-header a:hover {
-    color: #ff000099;
 }
 
 .error {

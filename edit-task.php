@@ -23,11 +23,9 @@
         if ($task_result -> num_rows > 0) {
             $task = $task_result -> fetch_assoc();
         } else {
-            echo "Tarefa não encontrada.";
             exit();
         }
     } else {
-        echo "ID da tarefa não fornecido.";
         exit();
     }
 
@@ -59,7 +57,7 @@
 <body>
     <header>
         <h1>Olá, <?= htmlspecialchars($_SESSION["name"]); ?></h1>
-        <a href="logout.php"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff0000"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a>
+        <a href="logout.php"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#ff0000"><path d="M480.67-120v-66.67h292.66v-586.66H480.67V-840h292.66q27 0 46.84 19.83Q840-800.33 840-773.33v586.66q0 27-19.83 46.84Q800.33-120 773.33-120H480.67Zm-63.34-176.67-47-48 102-102H120v-66.66h351l-102-102 47-48 184 184-182.67 182.66Z"/></svg></a>
     </header>
 
     <div class="form-container">
