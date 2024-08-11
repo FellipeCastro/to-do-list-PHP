@@ -6,23 +6,34 @@
         $name = $_POST["name"];
         $email = $_POST["email"];
         $password = $_POST["password"];
+        $confirm_password = $_POST["confirm_password"];
 
-        // Verificando se o email já está cadastrado
-        $check_email_sql = "SELECT * FROM users WHERE email = '$email'";
-        $check_email_result = mysqli_query($connection, $check_email_sql);
-
-        if (mysqli_num_rows($check_email_result) > 0) {
-            echo "<span class='error'>E-mail já cadastrado!</span>";
+        // Verificando se as senhas coincidem
+        if ($password !== $confirm_password) {
+            echo "<span class='error'>As senhas não coincidem!</span>";
         } else {
-            $result = mysqli_query($connection, "INSERT INTO users(name, password, email) VALUES ('$name', '$password', '$email')");
-        
-            if ($result) {
-                header("Location: login.php");
-                exit();
+            // Verificando se o email já está cadastrado
+            $check_email_sql = "SELECT * FROM users WHERE email = '$email'";
+            $check_email_result = mysqli_query($connection, $check_email_sql);
+    
+            if (mysqli_num_rows($check_email_result) > 0) {
+                echo "<span class='error'>E-mail já cadastrado!</span>";
             } else {
-                $error_message = "Erro ao cadastrar o usuário: " . mysqli_error($connection);
+                // Hash da senha usando o algoritmo padrão (atualmente Bcrypt)
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                // Inserindo o usuário no banco de dados
+                $result = mysqli_query($connection, "INSERT INTO users(name, password, email) VALUES ('$name', '$hashed_password', '$email')");
+            
+                if ($result) {
+                    header("Location: login.php");
+                    exit();
+                } else {
+                    $error_message = "Erro ao cadastrar o usuário: " . mysqli_error($connection);
+                }
             }
         }
+
     }
 ?>
 
@@ -54,6 +65,11 @@
                 <div class="input-container">
                     <label for="password">Senha:</label>
                     <input type="password" name="password" id="password" placeholder="Digite sua senha" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="confirm_password">Confirme sua senha:</label>
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirme sua senha" required>
                 </div>
 
                 <input type="submit" name="submit" value="Cadstrar-se" class="btn">

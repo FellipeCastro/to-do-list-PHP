@@ -18,7 +18,7 @@
             $user = $result -> fetch_assoc();
             
             // Verificando se a senha inserida corresponde à senha do banco de dados
-            if ($password == $user["password"]) {
+            if (password_verify($password, $user['password'])) {
                 // Adicionando o ID e o nome de usuário à sessão
                 $_SESSION["id"] = $user["id"];
                 $_SESSION["name"] = $user["name"];
@@ -50,7 +50,7 @@
 
                 <div class="input-container">
                     <label for="email">E-mail:</label>
-                    <input type="text" name="email" id="email" placeholder="Digite seu e-mail de usuário" required>
+                    <input type="text" name="email" id="email" placeholder="Digite seu e-mail" required>
                 </div>
 
                 <div class="input-container">
