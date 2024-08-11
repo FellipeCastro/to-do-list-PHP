@@ -14,15 +14,19 @@
 
         $task_id = $_GET["task_id"];
         $user_id = $_SESSION["id"];
+        $is_done = $_GET["is_done"];
 
-        // Deletando a tarefa
-        $result = mysqli_query($connection, "DELETE FROM tasks WHERE id = '$task_id' AND user_id = '$user_id'");
+        // Definindo o novo status da tarefa
+        $new_status = $is_done == "true" ? "pending" : "completed";
+
+        // Atualizando o status da tarefa no banco de dados
+        $result = mysqli_query($connection, "UPDATE tasks SET status = '$new_status' WHERE id = '$task_id'");
 
         if ($result) {
             header("Location: home.php");
             exit();
         } else {
-            echo "Erro ao deletar tarefa: " . mysqli_error($connection);
+            echo "Erro ao atualizar status da tarefa: " . mysqli_error($connection);
         }
     } else {
         echo "ID da tarefa não fornecido.";

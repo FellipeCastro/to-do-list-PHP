@@ -6,11 +6,11 @@
     if (isset($_POST["submit"])) {
         include_once("config.php");
 
-        $username = $_POST["username"];
+        $email = $_POST["email"];
         $password = $_POST["password"];
 
         // Consulta para verificar se o usuário existe
-        $sql = "SELECT * FROM users WHERE username = '$username'";
+        $sql = "SELECT * FROM users WHERE email = '$email'";
 
         $result = $connection -> query($sql);
 
@@ -21,7 +21,7 @@
             if ($password == $user['password']) {
                 // Adicionando o ID e o nome de usuário à sessão
                 $_SESSION["id"] = $user['id'];
-                $_SESSION["username"] = $user['username'];
+                $_SESSION["name"] = $user['name'];
 
                 header("Location: home.php");
                 exit();
@@ -49,8 +49,8 @@
                 <legend>Login</legend>
 
                 <div class="input-container">
-                    <label for="username">Usuário:</label>
-                    <input type="text" name="username" id="username" placeholder="Digite seu nome de usuário" required>
+                    <label for="email">E-mail:</label>
+                    <input type="text" name="email" id="email" placeholder="Digite seu e-mail de usuário" required>
                 </div>
 
                 <div class="input-container">

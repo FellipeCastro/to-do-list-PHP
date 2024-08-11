@@ -3,7 +3,7 @@
     session_start();
 
     // Verificando se o usuário está logado
-    if (!isset($_SESSION["id"]) || !isset($_SESSION["username"])) {
+    if (!isset($_SESSION["id"]) || !isset($_SESSION["name"])) {
         // Se não estiver logado, redireciona para a página de login
         header("Location: login.php");
         exit();
@@ -38,7 +38,7 @@
 </head>
 <body>
     <header>
-        <h1>Olá, <?= htmlspecialchars($_SESSION["username"]); ?></h1>
+        <h1>Olá, <?= htmlspecialchars($_SESSION["name"]); ?></h1>
         <a href="logout.php">Sair</a>
     </header>
 

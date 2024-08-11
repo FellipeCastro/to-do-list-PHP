@@ -3,11 +3,11 @@
     if (isset($_POST["submit"])) {
         include_once("config.php");
 
-        $username = $_POST["username"];
+        $name = $_POST["name"];
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $result = mysqli_query($connection, "INSERT INTO users(username, password, email) VALUES ('$username', '$password', '$email')");
+        $result = mysqli_query($connection, "INSERT INTO users(name, password, email) VALUES ('$name', '$password', '$email')");
         
         if ($result) {
             header("Location: login.php");
@@ -33,8 +33,8 @@
                 <legend>Cadastre-se</legend>
 
                 <div class="input-container">
-                    <label for="username">Usuário:</label>
-                    <input type="text" name="username" id="username" placeholder="Digite seu nome de usuário" required>
+                    <label for="name">Nome:</label>
+                    <input type="text" name="name" id="name" placeholder="Digite seu nome de usuário" required>
                 </div>
 
                 <div class="input-container">
