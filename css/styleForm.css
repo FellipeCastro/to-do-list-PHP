@@ -12,7 +12,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to right, #1493dc, #113647);
+    background-image: linear-gradient(to right, #1e90ff, #113647);
 }
 
 header {
