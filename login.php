@@ -25,10 +25,10 @@
                 header("Location: home.php");
                 exit();
             } else {
-                echo "<span class='error'>Senha incorreta!</span>";
+                echo "<span class='alert alert-danger mb-3'>Senha incorreta!</span>";
             }
         } else {
-            echo "<span class='error'>Usuário não encontrado!</span>";
+            echo "<span class='alert alert-danger mb-3'>Usuário não encontrado!</span>";
         }
     }
 ?>
@@ -39,7 +39,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List PHP</title>
-    
+
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -51,6 +51,7 @@
             width: 100%;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }

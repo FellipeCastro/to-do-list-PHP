@@ -10,14 +10,14 @@
 
         // Verificando se as senhas coincidem
         if ($password !== $confirm_password) {
-            echo "<span class='error'>As senhas não coincidem!</span>";
+            echo "<span class='alert alert-danger mb-3'>As senhas não conferem!</span>";
         } else {
             // Verificando se o email já está cadastrado
             $check_email_sql = "SELECT * FROM users WHERE email = '$email'";
             $check_email_result = $connection -> query($check_email_sql);
     
             if (mysqli_num_rows($check_email_result) > 0) {
-                echo "<span class='error'>E-mail já cadastrado!</span>";
+                echo "<span class='alert alert-danger mb-3'>E-mail já cadastrado!</span>";
             } else {
                 // Hash da senha usando o algoritmo padrão (atualmente Bcrypt)
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -44,7 +44,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -56,6 +56,7 @@
             width: 100%;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
