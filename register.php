@@ -14,7 +14,7 @@
         } else {
             // Verificando se o email já está cadastrado
             $check_email_sql = "SELECT * FROM users WHERE email = '$email'";
-            $check_email_result = mysqli_query($connection, $check_email_sql);
+            $check_email_result = $connection -> query($check_email_sql);
     
             if (mysqli_num_rows($check_email_result) > 0) {
                 echo "<span class='error'>E-mail já cadastrado!</span>";
@@ -23,7 +23,8 @@
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
                 // Inserindo o usuário no banco de dados
-                $result = mysqli_query($connection, "INSERT INTO users(name, password, email) VALUES ('$name', '$hashed_password', '$email')");
+                $sql = "INSERT INTO users(name, password, email) VALUES ('$name', '$hashed_password', '$email')";
+                $result = $connection -> query($sql);
             
                 if ($result) {
                     header("Location: login.php");
@@ -43,11 +44,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To do List PHP</title>
-    <!-- <link rel="stylesheet" href="css/styleForm.css"> -->
+    
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- CSS -->
     <style>
         body {
             background-color: #eee;

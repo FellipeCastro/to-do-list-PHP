@@ -20,7 +20,8 @@
         $new_status = $is_done == "true" ? "pending" : "completed";
 
         // Atualizando o status da tarefa no banco de dados
-        $result = mysqli_query($connection, "UPDATE tasks SET status = '$new_status' WHERE id = '$task_id'");
+        $sql = "UPDATE tasks SET status = '$new_status' WHERE id = '$task_id'";
+        $result = $connection -> query($sql);
 
         if ($result) {
             header("Location: home.php");

@@ -16,7 +16,8 @@
         $user_id = $_SESSION["id"];
 
         // Deletando a tarefa
-        $result = mysqli_query($connection, "DELETE FROM tasks WHERE id = '$task_id' AND user_id = '$user_id'");
+        $sql = "DELETE FROM tasks WHERE id = '$task_id' AND user_id = '$user_id'";
+        $result = $connection -> query($sql);
 
         if ($result) {
             header("Location: home.php");
